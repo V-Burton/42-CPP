@@ -4,21 +4,21 @@
 #include "Contact.hpp"
 
 static int getContactField(std::string *fieldContent, const std::string& identifier){
-    std::cout << identifier << ":";
+    std::cout << "3\t" << BOLD << UNDERLINE << identifier << END << ":";
     std::getline(std::cin, *fieldContent);
     if (std::cin.eof())
         return (1);
     while(fieldContent->empty())
     {
-        std::cout << "A contact can't have empty field" << std::endl;
-        std::cout << identifier << ": ";
+        std::cout << RED << BOLD "A contact can't have empty field" << END << std::endl;
+        std::cout << BOLD << identifier << END <<": ";
         std::getline(std::cin, *fieldContent);
     }
     return (0);
 }
 
 static void addContact(PhoneBook *phoneBook){
-    
+
     std::string contactInformation[5];
 
     if (getContactField(&contactInformation[0], "First Name"))
@@ -36,11 +36,12 @@ static void addContact(PhoneBook *phoneBook){
 }
 
 int main(void){
-    
+
     std::string choice;
     PhoneBook phoneBook;
 
-    std::cin >> choice;
+	std::cout << GREEN << "Welcome to your Awesome PhoneBook" << END << std::endl;
+	PhoneBook::displayCommands();
     while (true)
     {
         std::cout << "Enter a command: ";
@@ -55,7 +56,7 @@ int main(void){
             return (0);
         else
         {
-            std::cout << choice << ": is not a valid command" << std::endl;
+            std::cout << RED << BOLD << choice << ": is not a valid command" << END << std::endl;
             PhoneBook::displayCommands();
         }
     }

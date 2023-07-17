@@ -1,11 +1,11 @@
 #include <iostream>
 #include "PhoneBook.hpp"
 
-void    displayCommands();
-void    PhoneBook::printPhoneBook();
-void    PhoneBook::getContact(int contactIndex) const;
-void    PhoneBook::getContactInfo() const;
-void    PhoneBook::addContact(const Contact& newContact);
+// void    displayCommands();
+// void    PhoneBook::printPhoneBook();
+// void    PhoneBook::getContact(int contactIndex) const;
+// void    PhoneBook::getContactInfo() const;
+// void    PhoneBook::addContact(const Contact& newContact);
 
 
 PhoneBook::PhoneBook(void) : _currentSize(0), _lastContactIndex(0){}
@@ -21,7 +21,7 @@ void    PhoneBook::addContact(const Contact& newContact){
     }
     this->_contacts[_lastContactIndex] = newContact;
     this->_lastContactIndex = (this->_lastContactIndex + 1) % PHONEBOOK_SIZE;
-        
+
 }
 
 void    PhoneBook::getContactInfo() const{
@@ -29,7 +29,7 @@ void    PhoneBook::getContactInfo() const{
     int entryIndex = -1;
 
     while (entryIndex == -1){
-        std::cout << "contact index to display: ";
+        std::cout << GREEN << "Contact index to display: " << END;
         std::getline(std::cin, indexInput);
         if (std::cin.eof())
             return;
@@ -47,22 +47,22 @@ void    PhoneBook::getContactInfo() const{
             indexInput.clear();
         }
         Contact contact = this->getContact(entryIndex);
-        std::cout << std::setw(15) << std::right << std::setfill(' ') << "First Name: " << contact.getFirstName() << std::endl;
-        std::cout << std::setw(15) << std::right << std::setfill(' ') << "Last Name: " << contact.getLastName() << std::endl;
-        std::cout << std::setw(15) << std::right << std::setfill(' ') << "Nickname: " << contact.getNickName() << std::endl;
-        std::cout << std::setw(15) << std::right << std::setfill(' ') << "Phone number: " << contact.getPhoneNumber() << std::endl;
-        std::cout << std::setw(15) << std::right << std::setfill(' ') << "Darkest Secret: " << contact.getDarkestSecret() << std::endl;
+        std::cout << BOLD << "\tFirst Name: " << END << contact.getFirstName() << std::endl;
+        std::cout << BOLD << "\tLast Name: " << END << contact.getLastName() << std::endl;
+        std::cout << BOLD << "\tNickname: " << END << contact.getNickname() << std::endl;
+        std::cout << BOLD << "\tPhone number: " << END << contact.getPhoneNumber() << std::endl;
+        std::cout << BOLD << "\tDarkest Secret: " << END << contact.getDarkestSecret() << std::endl;
     }
 }
 
-void    PhoneBook::getContact(int contactIndex) const{
-    return this->_contact[contactIndex];
+Contact    PhoneBook::getContact(int contactIndex) const {
+    return this->_contacts[contactIndex];
 }
 
-void    PhoneBook::printPhoneBook(){
+void    PhoneBook::printPhoneBook() const{
     if (this->_currentSize == 0)
     {
-        std::cout << "Your phonebook is empty" << std::endl;
+        std::cout << RED << BOLD << "Your phonebook is empty" << END << std::endl;
         return ;
     }
     Contact::printLine("INDEX");
@@ -78,9 +78,9 @@ void    PhoneBook::printPhoneBook(){
     this->getContactInfo();
 }
 
-void    displayCommands(){
+void    PhoneBook::displayCommands(){
     std::cout << "You're option are :" << std::endl;
-    std::cout << "ADD : To save a new contact in your phonebook" << std::endl;
-    std::cout << "SEARCH : To display the information of one specific contact already in your phonebook" << std::endl;
-    std::cout << "EXIT : if you want to close your phonebook" << std::endl; 
+    std::cout << CYAN << BOLD << "\tADD :" << END << " To save a new contact in your phonebook" << std::endl;
+    std::cout << CYAN << BOLD << "\tSEARCH :" << END << " To display the information of one specific contact already in your phonebook" << std::endl;
+    std::cout << CYAN << BOLD << "\tEXIT :" << END << " If you want to close your phonebook" << std::endl;
 }

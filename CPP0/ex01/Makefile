@@ -7,8 +7,8 @@ HEADERS_FILES	:= Contact.hpp \
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:=	.
-SRC_FILES		:=	contact.cpp \
-					phoneBook.cpp \
+SRC_FILES		:=	Contact.cpp \
+					PhoneBook.cpp \
 					main.cpp
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
