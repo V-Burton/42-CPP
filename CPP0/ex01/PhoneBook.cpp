@@ -42,17 +42,15 @@ void    PhoneBook::getContactInfo() const{
             }
         }
         else
-        {
             std::cout << indexInput << " is not a valid index, please give an index between 0 and " << this->_currentSize - 1 << std::endl;
-            indexInput.clear();
-        }
-        Contact contact = this->getContact(entryIndex);
-        std::cout << BOLD << "\tFirst Name: " << END << contact.getFirstName() << std::endl;
-        std::cout << BOLD << "\tLast Name: " << END << contact.getLastName() << std::endl;
-        std::cout << BOLD << "\tNickname: " << END << contact.getNickname() << std::endl;
-        std::cout << BOLD << "\tPhone number: " << END << contact.getPhoneNumber() << std::endl;
-        std::cout << BOLD << "\tDarkest Secret: " << END << contact.getDarkestSecret() << std::endl;
+        indexInput.clear();
     }
+    Contact contact = this->getContact(entryIndex);
+    std::cout << BOLD << "\tFirst Name: " << END << contact.getFirstName() << std::endl;
+    std::cout << BOLD << "\tLast Name: " << END << contact.getLastName() << std::endl;
+    std::cout << BOLD << "\tNickname: " << END << contact.getNickname() << std::endl;
+    std::cout << BOLD << "\tPhone number: " << END << contact.getPhoneNumber() << std::endl;
+    std::cout << BOLD << "\tDarkest Secret: " << END << contact.getDarkestSecret() << std::endl;
 }
 
 Contact    PhoneBook::getContact(int contactIndex) const {

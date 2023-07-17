@@ -4,14 +4,14 @@
 #include "Contact.hpp"
 
 static int getContactField(std::string *fieldContent, const std::string& identifier){
-    std::cout << "3\t" << BOLD << UNDERLINE << identifier << END << ":";
+    std::cout << "\t" << BOLD << UNDERLINE << identifier << END << ":";
     std::getline(std::cin, *fieldContent);
     if (std::cin.eof())
         return (1);
     while(fieldContent->empty())
     {
         std::cout << RED << BOLD "A contact can't have empty field" << END << std::endl;
-        std::cout << BOLD << identifier << END <<": ";
+        std::cout << "\t" << BOLD << UNDERLINE << identifier << END << ":";
         std::getline(std::cin, *fieldContent);
     }
     return (0);
