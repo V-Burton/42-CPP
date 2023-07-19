@@ -22,11 +22,13 @@ int main(void){
 	std::string *stringPTR = &str;
 	std::string &stringREF = str;
 
-	std::cout << BOLD << "Memory address of the str: " << END << &str << std::endl;
-	std::cout << BOLD << "Memory address held by stringPTR: " << END << stringPTR << std::endl;
-	std::cout << BOLD << "Memory address held by stringREF: " << END << &stringREF << std::endl;
-	std::cout << BOLD << "Value of the string str: " << END << str << std::endl;
-	std::cout << BOLD << "Value pointed to by stringPTR: " << END << *stringPTR << std::endl;
-	std::cout << BOLD << "Value pointed to by stringREF: " << END << stringREF << std::endl;
+	std::cout << BOLD << UNDERLINE << "Memory address:" << END << std::endl;
+	std::cout << BOLD << "\t-str:       " << END << &str << std::endl;
+	std::cout << BOLD << "\t-stringPTR: " << END << stringPTR << std::endl;
+	std::cout << BOLD << "\t-stringREF: " << END << &stringREF << std::endl;
+	std::cout << BOLD << UNDERLINE << "Value:" << END << std::endl;
+	std::cout << BOLD << "\t-str:       " << END << str << std::endl;
+	std::cout << BOLD << "\t-stringPTR: " << END << *stringPTR << std::endl;
+	std::cout << BOLD << "\t-stringREF: " << END << stringREF << std::endl;
 	return (0);
 }
