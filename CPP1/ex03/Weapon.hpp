@@ -6,7 +6,7 @@
 /*   By: vburton <vburton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:49 by vburton           #+#    #+#             */
-/*   Updated: 2023/07/19 18:32:30 by vburton          ###   ########.fr       */
+/*   Updated: 2023/07/20 18:51:54 by vburton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ class Weapon
 	public:
 		Weapon(const std::string &weapon);
 		~Weapon();
-		std::string getType(void);
+		const std::string &getType(void) const;
 		void	setType(const std::string &newWeapon);
 
 	private:

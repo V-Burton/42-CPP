@@ -6,7 +6,7 @@
 /*   By: vburton <vburton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:50:50 by vburton           #+#    #+#             */
-/*   Updated: 2023/07/20 14:06:40 by vburton          ###   ########.fr       */
+/*   Updated: 2023/07/20 19:06:10 by vburton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ Weapon::Weapon(const std::string &weapon): _type(weapon){}
 Weapon::~Weapon(void){}
 
 
-std::string Weapon::getType(void){
-	std::string type = this->_type;
-	return (type);
+const std::string &Weapon::getType(void) const{
+	return (this->_type);
 }
 
 void	Weapon::setType(const std::string &newWeapon){
