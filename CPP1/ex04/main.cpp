@@ -6,16 +6,14 @@
 /*   By: vburton <vburton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:06:54 by vburton           #+#    #+#             */
-/*   Updated: 2023/07/20 12:31:09 by vburton          ###   ########.fr       */
+/*   Updated: 2023/07/20 13:40:52 by vburton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fstream>
 #include <iostream>
 
-using std::string;
-
-int	replace(const string filename, string s1, string s2)
+int	replace(const std::string filename, std::string s1, std::string s2)
 {
 	std::ifstream inputFile;
 	inputFile.open(filename.c_str());
@@ -35,7 +33,7 @@ int	replace(const string filename, string s1, string s2)
 	std::string newLine;
 	while (std::getline(inputFile, newLine)){
 		size_t pos = 0;
-		while((pos = newLine.find(s1, pos)) != string::npos && s1.size() > 0){
+		while((pos = newLine.find(s1, pos)) != std::string::npos && s1.size() > 0){
 			newLine.erase(pos, s1.size());
 			newLine.insert(pos, s2);
 			pos += s2.size();
