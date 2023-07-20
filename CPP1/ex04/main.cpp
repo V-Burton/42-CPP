@@ -6,7 +6,7 @@
 /*   By: vburton <vburton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:06:54 by vburton           #+#    #+#             */
-/*   Updated: 2023/07/19 19:36:43 by vburton          ###   ########.fr       */
+/*   Updated: 2023/07/20 12:31:09 by vburton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,41 @@
 
 using std::string;
 
-int	replace(string filename, string s1, string s2)
+int	replace(const string filename, string s1, string s2)
 {
-	s1 =s2;
-	std::string newFilePath = filename + ".replace";
-	std::ofstream newFile(newFilePath.c_str());
-	std::fstream originalFile;
-	std::fstream newF;
-	newF.open(newFile, std::ios::in);
-	originalFile.open(filename,std::ios::out);
-
+	std::ifstream inputFile;
+	inputFile.open(filename.c_str());
+	if (!inputFile.is_open()){
+		std::cerr << "Error oppening the input file" << std::endl;
+		return (1);		
+	}
+	const std::string newFilePath = filename + ".replace";
+	std::ofstream newFile;
+	newFile.open(newFilePath.c_str(), std::ios::trunc);
+	if (!newFile.is_open()){
+		std::cerr << "Error oppening the new file" << std::endl;
+		inputFile.close();
+		return (1);		
+	}
+	std::string line;
+	std::string newLine;
+	while (std::getline(inputFile, newLine)){
+		size_t pos = 0;
+		while((pos = newLine.find(s1, pos)) != string::npos && s1.size() > 0){
+			newLine.erase(pos, s1.size());
+			newLine.insert(pos, s2);
+			pos += s2.size();
+		}
+		newFile << newLine << "\n";
+	}
+	inputFile.close();
+	newFile.close();
 	return (0);
 }
 
 int main(int argc, char **argv){
 	if (argc != 4){
-		std::cout << "Proper use of replace is './replace <filename> <s1> <s2>'" << std::endl;
+		std::cout << "Proper use of \"./replace\" is \"./replace <filename> <s1> <s2>\"" << std::endl;
 		return(1);
 	}
 	replace(argv[1], argv[2], argv[3]);
