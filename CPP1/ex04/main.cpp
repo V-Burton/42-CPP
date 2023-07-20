@@ -6,7 +6,7 @@
 /*   By: vburton <vburton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:06:54 by vburton           #+#    #+#             */
-/*   Updated: 2023/07/20 13:40:52 by vburton          ###   ########.fr       */
+/*   Updated: 2023/07/20 15:00:47 by vburton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 
 int	replace(const std::string filename, std::string s1, std::string s2)
 {
-	std::ifstream inputFile;
-	inputFile.open(filename.c_str());
+	std::ifstream inputFile(filename.c_str());
 	if (!inputFile.is_open()){
 		std::cerr << "Error oppening the input file" << std::endl;
 		return (1);		
 	}
 	const std::string newFilePath = filename + ".replace";
-	std::ofstream newFile;
-	newFile.open(newFilePath.c_str(), std::ios::trunc);
+	std::ofstream newFile(newFilePath.c_str(), std::ios::trunc);
 	if (!newFile.is_open()){
 		std::cerr << "Error oppening the new file" << std::endl;
 		inputFile.close();
