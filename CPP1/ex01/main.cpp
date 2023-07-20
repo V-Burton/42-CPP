@@ -6,7 +6,7 @@
 /*   By: vburton <vburton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 12:17:17 by vburton           #+#    #+#             */
-/*   Updated: 2023/07/19 14:36:48 by vburton          ###   ########.fr       */
+/*   Updated: 2023/07/20 18:46:05 by vburton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@ Zombie *zombieHorde(int N, std::string name);
 
 int main(void){
     
+    int sizeHorde = 5;
     Zombie zombie("regular zombie");
     zombie.announce();
-    Zombie *horde = zombieHorde(5, "Horde de Zombies");
+    Zombie *horde = zombieHorde(sizeHorde, "Horde de Zombies");
     if (!horde){
         std::cout << "failed to alloc an horde of zombies" << std::endl;
         return (1);
     }
     
-    for(int i = 0; i < 10; i++){
+    for(int i = 0; i < sizeHorde; i++){
         horde[i].announce();
     }
     delete[] horde;
