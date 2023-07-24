@@ -8,8 +8,8 @@ class Fixed{
 
 	public:
 		Fixed();
-		Fixed(const Fixed &newFixed);
-		Fixed &operator=(const Fixed &newFixed);
+		Fixed(const Fixed &Fixed);
+		Fixed &operator=(const Fixed &Fixed);
 		~Fixed();
 
 		int		getRawBits(void) const;
