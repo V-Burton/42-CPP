@@ -17,5 +17,5 @@ class Fixed{
 
 	private:
 		int _fixedPoint;
-		static const int _nbFractionalBits;
+		static const int _nbFractionalBits = NBFRACTIONALBITS;
 };

@@ -1,7 +1,5 @@
 #include "Fixed.hpp"
 
-const int _nbFractionalBits = NBFRACTIONALBITS;
-
 Fixed::Fixed(): _fixedPoint(0){
 	std::cout << "Default constructor called" << std::endl;
 }
