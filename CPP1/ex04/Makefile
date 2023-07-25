@@ -22,7 +22,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CC_FLAGS) $(OBJS) -o $@
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp  Makefile
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp $(HEADERS_FILES) Makefile
 	@mkdir -p $(@D)
 	$(CC) $(CC_FLAGS) -I$(HEADERS_DIR) -c $< -o $@
 
