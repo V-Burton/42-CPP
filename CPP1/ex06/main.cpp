@@ -1,18 +1,12 @@
 #include "Harl.hpp"
 
-int main(void){
+int main(int argc, char **argv){
     Harl    harl;
 
-    harl.complain("DEBUG");
-    std::cout << std::endl;
-    harl.complain("INFO");
-    std::cout << std::endl;
-    harl.complain("WARNING");
-    std::cout << std::endl;
-    harl.complain("ERROR");
-    std::cout << std::endl;
-    std::cout << UNDERLINE << BOLD << "[ WRONG ]" << END << std::endl;
-    harl.complain("WRONG");
-    std::cout << std::endl;
+    if (argc != 2){
+        std::cerr << "Proper use is : ./HarlFilter <Error Level>" << std::endl;
+		return (1);
+	}
+	harl.complain(argv[1]);
     return (0);
 }

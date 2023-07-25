@@ -6,7 +6,7 @@
 /*   By: vburton <vburton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 12:17:17 by vburton           #+#    #+#             */
-/*   Updated: 2023/07/20 18:46:05 by vburton          ###   ########.fr       */
+/*   Updated: 2023/07/25 09:47:48 by vburton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int main(void){
         std::cout << "failed to alloc an horde of zombies" << std::endl;
         return (1);
     }
-    
     for(int i = 0; i < sizeHorde; i++){
         horde[i].announce();
     }

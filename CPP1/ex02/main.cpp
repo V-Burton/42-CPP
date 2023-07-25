@@ -6,7 +6,7 @@
 /*   By: vburton <vburton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:40 by vburton           #+#    #+#             */
-/*   Updated: 2023/07/19 18:58:14 by vburton          ###   ########.fr       */
+/*   Updated: 2023/07/25 09:51:07 by vburton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int main(void){
 	std::cout << BOLD << "\t-str:       " << END << str << std::endl;
 	std::cout << BOLD << "\t-stringPTR: " << END << *stringPTR << std::endl;
 	std::cout << BOLD << "\t-stringREF: " << END << stringREF << std::endl;
+
 	return (0);
 }
