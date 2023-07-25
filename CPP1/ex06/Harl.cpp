@@ -34,18 +34,6 @@ void    Harl::error(void){
     std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-// void    Harl::complain(std::string level){
-//     for (int i = 0; i < 4; i++){
-//         if (level == this->_levels[i]){
-//             while (i < 4){
-//                 (this->*(_fctLevel[i]))();
-//                 i++;
-//             }
-//         }
-//     }
-//     std::cerr << "Harl cannot complain since this : '" << level << "' doesn't exist" << std::endl;
-// }
-
 void    Harl::complain(std::string level){
     int numLevel = 0;
     for(int i = 0; i < 4 ; i++){
