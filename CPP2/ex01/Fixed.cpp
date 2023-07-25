@@ -1,20 +1,18 @@
 #include <Fixed.hpp>
 #include <cmath>
 
-const int	_nbFractionalBits = 8;
-
 Fixed::Fixed(): _fixedPoint(0){
 	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int raw){
 	std::cout << "Int constructor called" << std::endl;
-	this->_fixedPoint = raw << _nbFractionalBits;
+	this->_fixedPoint = (int)(raw * (1 << _nbFractionalBits));
 }
 
 Fixed::Fixed(const float raw){
 	std::cout << "Float constructor called" << std::endl;
-	this->_fixedPoint = roundf(raw * (1 << _nbFractionalBits));
+	this->_fixedPoint = (int)(roundf(raw * (1 << _nbFractionalBits)));
 }
 
 Fixed::Fixed(const Fixed &src){
@@ -30,11 +28,10 @@ Fixed &Fixed::operator=(const Fixed &rhs){
 
 Fixed::~Fixed(){
 	std::cout << "Destructor called" << std::endl;
-
 }
 
-std::ostream & operator<<(std::ostream & o, Fixed const & rhs){
-	o << rhs.getRawBits();
+std::ostream & operator<<(std::ostream & o, const Fixed & rhs){
+	o << rhs.toFloat();
 	return (o);
 }
 

@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 
+#define NBFRACTIONALBITS 8
+
 class Fixed{
 	public:
 		Fixed();
@@ -18,7 +20,7 @@ class Fixed{
 
 	private:
 		int				_fixedPoint;
-		static const	int _nbFractionalBits;
+		static const	int _nbFractionalBits = NBFRACTIONALBITS;
 };
 
 std::ostream & operator<<(std::ostream & out, Fixed const & rhs);
