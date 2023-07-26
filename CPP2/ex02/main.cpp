@@ -6,10 +6,18 @@ int main( void ) {
 
     std::cout << a << std::endl;
     std::cout << ++a << std::endl;
+    std::cout << --a << std::endl;
+    std::cout << ++a << std::endl;
+    std::cout << a-- << std::endl;
     std::cout << a << std::endl;
     std::cout << a++ << std::endl;
     std::cout << a << std::endl;
     std::cout << b << std::endl;
     std::cout << Fixed::max( a, b ) << std::endl;
+    std::cout << Fixed::min( a, b ) << std::endl;
+    Fixed c = a + b;
+    std::cout << c << std::endl;
+    std::cout << c - a << std::endl;
+
     return 0;
 }

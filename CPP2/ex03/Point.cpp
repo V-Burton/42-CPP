@@ -21,3 +21,16 @@ Fixed   Point::getX() const{
 Fixed   Point::getY() const{
     return (this->_y);
 }
+
+void    Point::setName(std::string name){
+    this->_name = name;
+}
+
+std::string Point::getName() const{
+    return (this->_name);
+}
+
+
+bool    Point::operator==(const Point &rhs) const {
+    return (this->_x == rhs.getX() && this->_y == rhs.getY());
+}

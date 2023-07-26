@@ -13,12 +13,13 @@ class Point{
 
         Fixed getX() const;
         Fixed getY() const;
+
+        std::string getName() const;
+        void    setName(std::string name);
+
+        bool operator==(const Point &rhs) const;
     private:
+        std::string _name;
         const Fixed _x;
         const Fixed _y;
 };
-
-std::ostream    &operator<<(std::ostream &out, const Point &point){
-    out << "[ " << point.getX() << ";" << point.getY() << " ]";
-    return (out);
-}

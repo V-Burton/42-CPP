@@ -1,4 +1,4 @@
-NAME			:=	FixedPoint
+NAME			:=	BSP
 
 HEADERS_DIR		:=	.
 HEADERS_FILES	:= Fixed.hpp \
@@ -9,7 +9,8 @@ HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 SRC_DIR			:=	.
 SRC_FILES		:=	main.cpp \
 					Fixed.cpp \
-					Point.cpp
+					Point.cpp \
+					bsp.cpp
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
