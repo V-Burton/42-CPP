@@ -1,5 +1,6 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(){
     std::string nameA = "Clap";
@@ -38,11 +39,23 @@ int main(){
     d.attack(a.getName());
     a.takeDamage(d.getDamage());
     a.attack(d.getName());
-    std::cout << "Hit Point SlavTrap " << d.getName() << " are : " << d.getHealth() << " and energie points are : " << d.getEnergie() << std::endl;
+    std::cout << "Hit Point ClapTrap " << d.getName() << " are : " << d.getHealth() << " and energie points are : " << d.getEnergie() << std::endl;
     std::cout << "Hit Point ClapTrap " << a.getName() << " are : " << a.getHealth() << " and energie points are : " << a.getEnergie() << std::endl;
     a.beRepaired(10);
-    std::cout << "Hit Point ScavTrap " << d.getName() << " are : " << d.getHealth() << " and energie points are : " << d.getEnergie() << std::endl;
+    std::cout << "Hit Point ScapTrap " << d.getName() << " are : " << d.getHealth() << " and energie points are : " << d.getEnergie() << std::endl;
     std::cout << "Hit Point ClapTrap " << a.getName() << " are : " << a.getHealth() << " and energie points are : " << a.getEnergie() << std::endl;
     
+    std::cout <<"\n----------------------------------------------------\n" << std::endl;
+    
+    std::string nameF = "Frag";
+    FragTrap f = FragTrap(nameF);
+    FragTrap g(f);
+    FragTrap h;
+    h = f;
+    std::cout << "FragTrap f name is : " << f.getName() << std::endl;
+    std::cout << "FragTrap g name is : " << g.getName() << std::endl;
+    std::cout << "FragTrap h name is : " << h.getName() << std::endl;
+    g.highFivesGuys();
+
     std::cout << "Simulation ended !" << std::endl;
 }
