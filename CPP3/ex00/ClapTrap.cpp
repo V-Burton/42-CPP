@@ -50,7 +50,7 @@ unsigned	int	ClapTrap::getEnergie(){
 void	ClapTrap::takeDamage(unsigned int amount){
 	if (this->_hPoint <= 0){
 		std::cout << this->_name << " is dead..." << std::endl;
-		return ();
+		return ;
 	}
 	std::cout << "ClapTrap " << this->_name << " takes " << amount << " damage..." << std::endl;
 	if (amount > (unsigned int)this->_hPoint)
@@ -62,7 +62,7 @@ void	ClapTrap::takeDamage(unsigned int amount){
 void	ClapTrap::attack(const std::string &target){
 	if (this->_hPoint <= 0){
 		std::cout << this->_name << " is dead..." << std::endl;
-		return ();
+		return ;
 	}
 	if (this->_ePoint <= 0){
 		std::cout << this->_name << "Don't have enought energy to perform any action" << std::endl;

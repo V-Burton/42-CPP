@@ -62,27 +62,27 @@ void	ClapTrap::takeDamage(unsigned int amount){
 
 void	ClapTrap::attack(const std::string &target){
 	if (this->_hPoint <= 0){
-		std::cout << this->_name << " is dead..." << std::endl;
+		std::cout << this->_name << RED << " is dead..." << END << std::endl;
 		return ;
 	}
 	if (this->_ePoint <= 0){
-		std::cout << this->_name << "Don't have enought energy to perform any action" << std::endl;
+		std::cout << this->_name << RED << "Don't have enought energy to perform any action" << END << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << this->_name << " attacks " << target << " causing " << this->_aDamage << " points of damage!" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " attacks " << target << " causing " << RED << this->_aDamage << " points of damage!" << END << std::endl;
 	this->_ePoint--;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount){
 	if (this->_hPoint <= 0){
-		std::cout << this->_name << " is dead..." << std::endl;
+		std::cout << this->_name << RED << " is dead..." << END << std::endl;
 		return ;
 	}
 	if (this->_ePoint <= 0){;
-		std::cout << this->_name << "Don't have enought energy to perform any action" << std::endl;
+		std::cout << this->_name << RED << "Don't have enought energy to perform any action" << END << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << this->_name << " gets " << amount << " hit point by Repairing itself" << std::endl;
+	std::cout << "ClapTrap " << this->_name << GREEN << " gets " << amount << " hit point by Repairing itself" << END << std::endl;
 	this->_hPoint += amount;
 	this->_ePoint--;
 }

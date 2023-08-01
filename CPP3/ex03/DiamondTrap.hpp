@@ -3,7 +3,7 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-class DiamondTrap: public virtual ClapTrap, public FragTrap, public ScavTrap{
+class DiamondTrap: public virtual ClapTrap, public virtual ScavTrap, public virtual FragTrap{
 
     public:
         DiamondTrap(const std::string &name);
@@ -11,9 +11,12 @@ class DiamondTrap: public virtual ClapTrap, public FragTrap, public ScavTrap{
         DiamondTrap &operator=(const DiamondTrap &rhs);
         ~DiamondTrap();
 
-        void highFivesGuys(void);
 
-    private : 
+		void		whoAmI();
+
+		using		ScavTrap::attack;
+
+    private :
         std::string _name;
         DiamondTrap();
 };
