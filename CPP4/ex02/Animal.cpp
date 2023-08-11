@@ -26,7 +26,3 @@ std::string Animal::getType() const{
 void	Animal::setType(std::string name){
 	this->_type = name;
 }
-
-void	Animal::makeSound() const{
-	std::cout << "Random Animal make " << BOLD << "AAARFRGEHHHH \n" << END;
-}
