@@ -1,4 +1,4 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 Form::Form(): _name("Default"), _signed(false), _signGrade(150), _executeGrade(150){}
@@ -47,11 +47,11 @@ void	Form::beSigned(Bureaucrat rhs){
 		throw Bureaucrat::GradeToLowException();
 }
 
-const char *Form::GradeToHighException::GradeToHighException::what() const throw(){
+const char *Form::GradeToHighException::what() const throw(){
 	return ("Form's grade is to high!");
 }
 
-const char *Form::GradeToLowException::GradeToLowException::what() const throw(){
+const char *Form::GradeToLowException::what() const throw(){
 	return ("Form's grade is to Low!");
 }
 
