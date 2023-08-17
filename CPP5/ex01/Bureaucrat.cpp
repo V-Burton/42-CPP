@@ -50,6 +50,21 @@ const char *Bureaucrat::GradeToLowException::what() const throw(){
 	return ("Bureaucrat's grade is to low!");
 }
 
+void	Bureaucrat::signForm(Form &form) const{
+	bool	isSigned = form.isSigned();
+
+	try {
+		form.beSigned(*this);
+		if (isSigned == true)
+			std::cout << this->_name << " couldn't sign " << form.getName() << " because form is already sign." << std::endl;
+		else
+			std::cout << this->_name << " signed " << form.getName() << std::endl;
+	}
+	catch (std::exception &e){
+		std::cerr << e.what() << " Required grade is " << form.getSignGrade() << " and " << this->_name << " is grade " << this->_grade << std::endl;
+	}
+}
+
 std::ostream &operator<<(std::ostream &out, Bureaucrat &rhs){
 	out << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << ".\n";
 	return (out);
