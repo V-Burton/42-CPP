@@ -22,11 +22,12 @@ class Bureaucrat{
 		const char *what() const throw();
 	};
 
-		const std::string getName() const;
+		std::string getName() const;
 		int			getGrade() const;
 		void		increment();
 		void		decrement();
 		void		signForm(Form &form) const;
+		void		executeForm(const Form &form);
 
 	private:
 		const std::string	_name;

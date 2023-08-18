@@ -14,12 +14,12 @@ class Form{
 		~Form();
 
 		const std::string	getName() const;
-		bool		isSigned() const;
-		void		setSigned(bool value);
-		int			getSignGrade() const;
-		int			getExecuteGrade() const;
-		void		beSigned(Bureaucrat rhs);
-		virtual void	execute(const Bureaucrat &executor) = 0;
+		bool				isSigned() const;
+		void				setSigned(bool value);
+		int					getSignGrade() const;
+		int					getExecuteGrade() const;
+		void				beSigned(Bureaucrat rhs);
+		virtual void		execute(const Bureaucrat &executor) const = 0;
 
 
 		class GradeToLowException: public std::exception{
@@ -28,7 +28,7 @@ class Form{
 		class GradeToHighException: public std::exception{
 			const char* what() const throw();
 		};
-		class FormNotSignException: public std::exception{
+		class FormNotSignedException: public std::exception{
 			const char* what() const throw();
 		};
 

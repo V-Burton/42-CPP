@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "AForm.hpp"
 
 class PresidentialPardonForm: public Form{
@@ -11,8 +10,8 @@ class PresidentialPardonForm: public Form{
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &rhs);
 		~PresidentialPardonForm();
 
-		void	execute(const Bureaucrat &executor);
+		void	execute(const Bureaucrat &executor) const;
 
 	private:
-		const std::string _target;
+		std::string _target;
 };

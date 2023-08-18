@@ -22,7 +22,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs){
 
 Bureaucrat::~Bureaucrat(){}
 
-const std::string Bureaucrat::getName() const{
+std::string Bureaucrat::getName() const{
 	return (this->_name);
 }
 
@@ -62,6 +62,18 @@ void	Bureaucrat::signForm(Form &form) const{
 	}
 	catch (std::exception &e){
 		std::cerr << e.what() << " Required grade is " << form.getSignGrade() << " and " << this->_name << " is grade " << this->_grade << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(const Form &form){
+	try{
+		form.execute(*this);
+	}
+	catch (Form::FormNotSignedException()){
+
+	}
+	catch (Form::GradeToLowException()){
+
 	}
 }
 

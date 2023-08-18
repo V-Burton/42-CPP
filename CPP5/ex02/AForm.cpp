@@ -59,7 +59,7 @@ const char *Form::GradeToLowException::what() const throw(){
 	return ("Form's grade is to Low!");
 }
 
-const char *Form::FormNotSignException::what() const throw(){
+const char *Form::FormNotSignedException::what() const throw(){
 	return ("Form's grade is to Low!");
 }
 
