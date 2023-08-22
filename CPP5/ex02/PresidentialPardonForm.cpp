@@ -5,6 +5,10 @@ PresidentialPardonForm::PresidentialPardonForm(): Form("PresidentialPardonForm",
 	this->_target = "default";
 }
 
+PresidentialPardonForm::PresidentialPardonForm(std::string target): Form("PresidentialPardonForm", 25, 5){
+	this->_target = target;
+}
+
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &rhs): Form(rhs){
 	*this = rhs;
 }

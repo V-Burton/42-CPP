@@ -1,9 +1,13 @@
-#include <cstdlib> 
+#include <cstdlib>
 #include "Bureaucrat.hpp"
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(): Form("RobotomyRequestForm", 72, 45){
 	this->_target = "default";
+}
+
+RobotomyRequestForm::RobotomyRequestForm(std::string target): Form("RobotomyRequestForm", 72, 45){
+	this->_target = target;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &rhs): Form(rhs){

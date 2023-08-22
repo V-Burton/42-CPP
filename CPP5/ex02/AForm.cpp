@@ -45,8 +45,10 @@ int	Form::getExecuteGrade() const{
 
 
 void	Form::beSigned(Bureaucrat rhs){
-	if (rhs.getGrade() <= this->_signGrade)
+	if (rhs.getGrade() <= this->_signGrade && !this->_signed){
+		std::cout << rhs.getName() << " signed " << this->_name << std::endl;
 		this->_signed = true;
+	}
 	else
 		throw Bureaucrat::GradeToLowException();
 }
@@ -60,7 +62,7 @@ const char *Form::GradeToLowException::what() const throw(){
 }
 
 const char *Form::FormNotSignedException::what() const throw(){
-	return ("Form's grade is to Low!");
+	return ("Form is not signed yet, therefore it can't be execute.");
 }
 
 std::ostream &operator<<(std::ostream &out, Form &rhs){
@@ -69,6 +71,6 @@ std::ostream &operator<<(std::ostream &out, Form &rhs){
 		signedResult = "signed";
 	else
 		signedResult = "not signed";
-	out << "Form's name: " << rhs.getName() << " signable by grade " << rhs.getSignGrade() << " and executable by grade " << rhs.getSignGrade() << " is " << signedResult << "." << std::endl;
+	out << "Form's name: " << rhs.getName() << " signable by grade " << rhs.getSignGrade() << " and executable by grade " << rhs.getExecuteGrade() << " is " << signedResult << "." << std::endl;
 	return (out);
 }

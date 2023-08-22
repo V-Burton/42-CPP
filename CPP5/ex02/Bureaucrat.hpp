@@ -16,10 +16,12 @@ class Bureaucrat{
 		~Bureaucrat();
 
 	class GradeToHighException: public std::exception{
+		public:
 			const char *what() const throw();
 	};
 	class GradeToLowException: public std::exception{
-		const char *what() const throw();
+		public:
+			const char *what() const throw();
 	};
 
 		std::string getName() const;

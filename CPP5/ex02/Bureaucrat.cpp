@@ -43,11 +43,11 @@ void	Bureaucrat::decrement(){
 }
 
 const char *Bureaucrat::GradeToHighException::what() const throw(){
-	return ("Bureaucrat's grade is to high!");
+	return ("Bureaucrat's grade is to high!\n");
 }
 
 const char *Bureaucrat::GradeToLowException::what() const throw(){
-	return ("Bureaucrat's grade is to low!");
+	return ("Bureaucrat's grade is to low!\n");
 }
 
 void	Bureaucrat::signForm(Form &form) const{
@@ -57,11 +57,9 @@ void	Bureaucrat::signForm(Form &form) const{
 		form.beSigned(*this);
 		if (isSigned == true)
 			std::cout << this->_name << " couldn't sign " << form.getName() << " because form is already sign." << std::endl;
-		else
-			std::cout << this->_name << " signed " << form.getName() << std::endl;
 	}
 	catch (std::exception &e){
-		std::cerr << e.what() << " Required grade is " << form.getSignGrade() << " and " << this->_name << " is grade " << this->_grade << std::endl;
+		std::cerr << e.what() << "Required grade is " << form.getSignGrade() << " and " << this->_name << " is grade " << this->_grade << std::endl;
 	}
 }
 
@@ -69,11 +67,8 @@ void	Bureaucrat::executeForm(const Form &form){
 	try{
 		form.execute(*this);
 	}
-	catch (Form::FormNotSignedException()){
-
-	}
-	catch (Form::GradeToLowException()){
-
+	catch (std::exception &e){
+		std::cout << e.what() << std::endl;
 	}
 }
 

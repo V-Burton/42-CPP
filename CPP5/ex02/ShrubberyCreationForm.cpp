@@ -4,6 +4,10 @@
 ShrubberyCreationForm::ShrubberyCreationForm(): Form("ShrubberyCreationForm", 145, 137), _target("default"){
 }
 
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target): Form("ShrubberyCreationForm", 145, 137), _target(target){
+}
+
+
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &rhs): Form(rhs){
 	*this = rhs;
 }
@@ -42,4 +46,5 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const{
 		"  ______/____ ____\n";
 
 	outfile.close();
+	std::cout << "Shrubbery form has been execute corectly.\n";
 }

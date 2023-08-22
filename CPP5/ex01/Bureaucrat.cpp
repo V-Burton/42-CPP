@@ -57,11 +57,9 @@ void	Bureaucrat::signForm(Form &form) const{
 		form.beSigned(*this);
 		if (isSigned == true)
 			std::cout << this->_name << " couldn't sign " << form.getName() << " because form is already sign." << std::endl;
-		else
-			std::cout << this->_name << " signed " << form.getName() << std::endl;
 	}
 	catch (std::exception &e){
-		std::cerr << e.what() << " Required grade is " << form.getSignGrade() << " and " << this->_name << " is grade " << this->_grade << std::endl;
+		std::cerr << e.what() << "Required grade is " << form.getSignGrade() << " and " << this->_name << " is grade " << this->_grade << std::endl;
 	}
 }
 
