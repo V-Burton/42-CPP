@@ -3,13 +3,12 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
-#include "AForm.hpp"
+#include "Form.hpp"
 
 class Form;
 
 class Bureaucrat{
 	public:
-		Bureaucrat();
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat &rhs);
 		Bureaucrat &operator=(const Bureaucrat &rhs);
@@ -22,7 +21,7 @@ class Bureaucrat{
 		const char *what() const throw();
 	};
 
-		const std::string getName() const;
+		std::string getName() const;
 		int			getGrade() const;
 		void		increment();
 		void		decrement();
@@ -31,6 +30,7 @@ class Bureaucrat{
 	private:
 		const std::string	_name;
 		int					_grade;
+		Bureaucrat();
 };
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat &rhs);

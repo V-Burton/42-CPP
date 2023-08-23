@@ -28,7 +28,7 @@ const std::string Form::getName() const{
 }
 
 bool	Form::isSigned() const{
-	return (this->_signed);
+	return (this->_signed);	
 }
 
 void	Form::setSigned(bool value){
@@ -71,6 +71,6 @@ std::ostream &operator<<(std::ostream &out, Form &rhs){
 		signedResult = "signed";
 	else
 		signedResult = "not signed";
-	out << "Form's name: " << rhs.getName() << " signable by grade " << rhs.getSignGrade() << " and executable by grade " << rhs.getExecuteGrade() << " is " << signedResult << ".";
+	out << "Form's name: " << rhs.getName() << " signable by grade ";
 	return (out);
 }

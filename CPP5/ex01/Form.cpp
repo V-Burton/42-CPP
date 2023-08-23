@@ -1,4 +1,4 @@
-#include "AForm.hpp"
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 
 Form::Form(): _name("Default"), _signed(false), _signGrade(150), _executeGrade(150){}
@@ -15,6 +15,8 @@ Form::Form(const Form &rhs): _name(rhs._name), _signGrade(rhs._signGrade), _exec
 }
 
 Form &Form::operator=(const Form &rhs){
+	if (this == &rhs)
+		return (*this);
 	this->_signed = rhs._signed;
 	return (*this);
 }
@@ -26,9 +28,7 @@ const std::string Form::getName() const{
 }
 
 bool	Form::isSigned() const{
-	if (_signed == true)
-		return (true);
-	return (false);
+	return (this->_signed);
 }
 
 int	Form::getSignGrade() const{
@@ -61,6 +61,6 @@ std::ostream &operator<<(std::ostream &out, Form &rhs){
 		signedResult = "signed";
 	else
 		signedResult = "not signed";
-	out << "Form's name: " << rhs.getName() << " signable by grade " << rhs.getSignGrade() << " and executable by grade " << rhs.getSignGrade() << " is " << signedResult << "." << std::endl;
+	out << "Form's name: " << rhs.getName() << " signable by grade " << rhs.getSignGrade() << " and executable by grade " << rhs.getSignGrade() << " is " << signedResult << ".";
 	return (out);
 }
