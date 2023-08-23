@@ -32,13 +32,13 @@ int main(){
     ScavTrap d = ScavTrap(nameC);
     ScavTrap e = d;
     std::cout << "ScavTrap e name is : " << e.getName() << std::endl;
-    std::cout << "Hit Point SlavTrap " << e.getName() << " are : " << e.getHealth() << " and energie points are : " << e.getEnergie() << std::endl;
+    std::cout << "Hit Point ScavTrap " << e.getName() << " are : " << e.getHealth() << " and energie points are : " << e.getEnergie() << std::endl;
     std::cout << "ScavTrap d name is : " << d.getName() << std::endl;
     d.guardGate();
     d.attack(a.getName());
     a.takeDamage(d.getDamage());
     a.attack(d.getName());
-    std::cout << "Hit Point SlavTrap " << d.getName() << " are : " << d.getHealth() << " and energie points are : " << d.getEnergie() << std::endl;
+    std::cout << "Hit Point ScavTrap " << d.getName() << " are : " << d.getHealth() << " and energie points are : " << d.getEnergie() << std::endl;
     std::cout << "Hit Point ClapTrap " << a.getName() << " are : " << a.getHealth() << " and energie points are : " << a.getEnergie() << std::endl;
     a.beRepaired(10);
     std::cout << "Hit Point ScavTrap " << d.getName() << " are : " << d.getHealth() << " and energie points are : " << d.getEnergie() << std::endl;

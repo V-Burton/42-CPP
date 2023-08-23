@@ -30,7 +30,7 @@ FragTrap &FragTrap::operator=(const FragTrap &rhs){
 }
 
 FragTrap::~FragTrap(){
-        std::cout << "FragTrap destructor called." << std::endl;
+        std::cout << BOLD << RED << "FragTrap destructor called." << END << std::endl;
 
 }
 

@@ -22,7 +22,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &rhs){
 }
 
 ClapTrap::~ClapTrap(){
-	std::cout << "Destructor called" << std::endl;
+	std::cout << BOLD << RED << "Destructor called" << END << std::endl;
 }
 
 /*			Functions			*/

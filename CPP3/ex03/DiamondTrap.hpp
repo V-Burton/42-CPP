@@ -3,7 +3,7 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-class DiamondTrap: public virtual ClapTrap, public virtual ScavTrap, public virtual FragTrap{
+class DiamondTrap: public virtual ScavTrap, public FragTrap{
 
     public:
         DiamondTrap(const std::string &name);

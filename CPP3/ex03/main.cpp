@@ -38,7 +38,7 @@ int main(){
     ScavTrap e = d;
 	std::cout << END;
     std::cout << "ScavTrap e name is : " << e.getName() << std::endl;
-    std::cout << "Hit Point SlavTrap " << e.getName() << " are : " << e.getHealth() << " and energie points are : " << e.getEnergie() << std::endl;
+    std::cout << "Hit Point ScavTrap " << e.getName() << " are : " << e.getHealth() << " and energie points are : " << e.getEnergie() << std::endl;
     std::cout << "ScavTrap d name is : " << d.getName() << std::endl;
     d.guardGate();
     d.attack(a.getName());
@@ -80,6 +80,5 @@ int main(){
 
 
     std::cout << "Simulation ended !" << std::endl;
-	std::cout << BOLD << RED ;
 	return (0);
 }

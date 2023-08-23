@@ -33,7 +33,7 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &rhs){
 }
 
 DiamondTrap::~DiamondTrap(){
-        std::cout << "DiamondTrap destructor called." << std::endl;
+        std::cout << BOLD << RED << "DiamondTrap destructor called." << END << std::endl;
 
 }
 
