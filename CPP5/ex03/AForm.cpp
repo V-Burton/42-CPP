@@ -45,12 +45,16 @@ int	Form::getExecuteGrade() const{
 
 
 void	Form::beSigned(Bureaucrat rhs){
-	if (rhs.getGrade() <= this->_signGrade && !this->_signed){
-		std::cout << rhs.getName() << " signed " << this->_name << std::endl;
-		this->_signed = true;
+	if (rhs.getGrade() <= this->_signGrade){
+		if (!this->_signed){
+			std::cout << rhs.getName() << " signed " << this->_name << std::endl;
+			this->_signed = true;
+		}
 	}
-	else
+	else{
+		std::cerr << rhs.getName() << " couldn't signed " << this->_name << " because ";
 		throw Bureaucrat::GradeToLowException();
+	}
 }
 
 const char *Form::GradeToHighException::what() const throw(){

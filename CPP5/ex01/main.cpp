@@ -17,7 +17,6 @@ int main(){
 		else
 			std::cout << "firstForm is signed.\n";
 		first.signForm(firstForm);
-		std::cout << "first sign the form firstForm.\n";
 		if (!firstForm.isSigned())
 			std::cout << "firstForm not signed.\n";
 		else
