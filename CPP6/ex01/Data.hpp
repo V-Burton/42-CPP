@@ -2,6 +2,6 @@
 
 struct Data {
     int     i;
-    float   f;
+    char    c;
     double  d;
 };

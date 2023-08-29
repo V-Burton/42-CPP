@@ -48,7 +48,6 @@ class ScalarConvert{
 		void	setFloat();
 		void	setDouble();
 
-		bool		_impossible;
 		e_type		_type;
 		std::string	_str;
 		char		_c;

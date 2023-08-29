@@ -62,14 +62,10 @@ int main(){
     Base    *generated = generate();
     Base    *fail = new Fail();
 
-    try{
-        identify(*generated);
-        identify(generated);
-        identify(*fail);
-        identify(fail);
-    }
-    catch(std::bad_alloc &e){
-        std::cout << "The type of the argument given is unknown." << std::endl;
-    }
-
+    identify(*generated);
+    identify(generated);
+    identify(*fail);
+    identify(fail);
+    delete (fail);
+    delete (generated);
 }

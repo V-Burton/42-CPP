@@ -15,7 +15,6 @@ ScalarConvert &ScalarConvert::operator=(const ScalarConvert &rhs){
 	this->_i 			= rhs._i;
 	this->_f 			= rhs._f;
 	this->_d 			= rhs._d;
-	this->_impossible	= rhs._impossible;
 	this->_type 		= rhs._type;
 	return (*this);
 }
