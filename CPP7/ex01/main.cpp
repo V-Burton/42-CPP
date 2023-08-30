@@ -1,6 +1,6 @@
 #include "iter.hpp"
 
-void    square(int  &a){
+void    square(int &a){
     a *= a;
 }
 

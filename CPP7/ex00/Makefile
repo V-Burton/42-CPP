@@ -1,4 +1,4 @@
-NAME			:= realType
+NAME			:= Template
 
 HEADERS_DIR		:=	.
 HEADERS_FILES	:= whatever.hpp
