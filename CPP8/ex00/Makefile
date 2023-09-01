@@ -1,4 +1,4 @@
-NAME			:= Template
+NAME			:= easyfind
 
 HEADERS_DIR		:=	.
 HEADERS_FILES	:= easyfind.hpp
