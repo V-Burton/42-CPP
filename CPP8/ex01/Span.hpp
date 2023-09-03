@@ -18,6 +18,7 @@ class Span{
 		};
 
 		void	addNumber(int n);
+		void 	addMultipleNumber(int first, int last);
 		int		shortestSpan() const;
 		int		longestSpan() const;
 

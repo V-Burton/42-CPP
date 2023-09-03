@@ -33,7 +33,15 @@ void	Span::addNumber(int n){
 		throw Span::TooManyNumberInSpan();
 }
 
+void Span::addMultipleNumber(int first, int last){
+	srand(time(0));
+	for(int i = first; i < last; i++)
+		this->addNumber(rand());
+}
+
 int	Span::shortestSpan() const {
+	if (_tab.size() == 0)
+		return (std::cout << "_tab is empty : ", -1);
 	std::vector<int> copy = _tab;
 	std::sort(copy.begin(), copy.end());
 	std::vector<int>::const_iterator it = copy.begin();
@@ -52,6 +60,8 @@ int	Span::shortestSpan() const {
 }
 
 int	Span::longestSpan() const {
+	if (_tab.size() == 0)
+		return (std::cout << "_tab is empty : ", -1);
 	std::vector<int> copy = _tab;
 	std::sort(copy.begin(), copy.end());
 	std::vector<int>::const_iterator it = copy.begin();

@@ -19,11 +19,27 @@ int main()
 			sp1.addNumber(19);
 		}
 		catch(std::exception const &e){
-			std::cerr << e.what() << std::cout;
-			std::cout << "error" << std::endl;
+			std::cerr << e.what();
 		}
 	}
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
+
+	Span sp2 = Span(10200);
+	try{
+	sp2.addMultipleNumber(0, 10200);
+	}
+	catch(std::exception &e){
+		std::cerr << e.what();
+	}
+	try{
+		sp2.addNumber(0);
+		sp2.addNumber(19);
+	}
+	catch(std::exception &e){
+		std::cerr << e.what();
+	}
+	std::cout << sp2.shortestSpan() << std::endl;
+	std::cout << sp2.longestSpan() << std::endl;
 	return 0;
 }
