@@ -1,7 +1,7 @@
 NAME			:= abomination
 
 HEADERS_DIR		:=	.
-HEADERS_FILES	:= MutanStack.hpp
+HEADERS_FILES	:= MutantStack.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
