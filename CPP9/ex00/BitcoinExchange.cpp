@@ -62,7 +62,6 @@ double checkValue(const std::string& str) {
     char* end;
     double value;
     value = strtod(str.c_str(), &end);
-    // std::cout << "value = " << end << std::endl;
     if (*end == '\0')
         return (value);
     return (-1);
