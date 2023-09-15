@@ -15,22 +15,15 @@ class PmergeMe{
 		PmergeMe &operator=(const PmergeMe &rhs);
 		~PmergeMe();
 
-		// void	sort(int begin, int end);
-		// void	merge(int begin, int middle, int end);
-		// void	insertion(int begin, int end);
-		// void	display() const;
+		void	sortList(std::list<int>::iterator begin, std::list<int>::iterator end);
+		void	mergeList(std::list<int>::iterator begin, std::list<int>::iterator middle, std::list<int>::iterator end);
+		void	insertionList(std::list<int>::iterator begin, std::list<int>::iterator end);
+		void	displayList() const;
 
-		std::vector<int>	&getVector();
-		std::list<int>		&getList();
-
-		template<typename Container>
-		void	sort(Container& container, typename Container::iterator begin, typename Container::iterator end);
-		template<typename Container>
-		void	insertion(Container &container, typename Container::iterator begin, typename Container::iterator end);
-		template<typename Container>
-		void	merge(Container &container, typename Container::iterator begin, typename Container::iterator middle, typename Container::iterator end);
-		template<typename Container>
-		void	display(Container &container);
+		void	sortVector(int begin, int end);
+		void	mergeVector(int begin, int middle, int end);
+		void	insertionVector(int begin, int end);
+		void	displayVector() const;
 
 	private:
 		PmergeMe();
