@@ -23,9 +23,9 @@ int	main(int argc, char **argv){
 		timeV = static_cast<double>(timeEnd - timeStart) / CLOCKS_PER_SEC * 1000000;
 		test.displayVector();
 		std::cout << std::endl;
-		timeStart = clock();
-		test.sortList(test.getList().begin(), test.getList().end());
-		timeEnd = clock();
+		// timeStart = clock();
+		// test.sortList(test.getList().begin(), test.getList().end());
+		// timeEnd = clock();
 		// test.displayList();
 		timeD = static_cast<double>(timeEnd - timeStart) / CLOCKS_PER_SEC * 1000000;
 		std::cout << "Time to precess a range of " << argc - 1 << " elements with std::vector<int> : " << timeV << " us" << std::endl;

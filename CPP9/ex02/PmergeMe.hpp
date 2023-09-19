@@ -7,7 +7,7 @@
 #include <list>
 #include <algorithm>
 
-#define INSERTION 24
+#define INSERTION 2
 
 class PmergeMe{
 	public:
@@ -15,11 +15,6 @@ class PmergeMe{
 		PmergeMe(const PmergeMe &rhs);
 		PmergeMe &operator=(const PmergeMe &rhs);
 		~PmergeMe();
-
-		// void	sortDeque(int begin, int end);
-		// void	mergeDeque(int begin, int middle, int end);
-		// void	insertionDeque(int begin, int end);
-		// void	displayDeque() const;
 
 		void	sortVector(int begin, int end);
 		void	mergeVector(int begin, int middle, int end);
@@ -36,8 +31,5 @@ class PmergeMe{
 	private:
 		PmergeMe();
 		std::vector<int>	_vector;
-		// std::deque<int>		_deque;
 		std::list<int>		_list;
-
-
 };
