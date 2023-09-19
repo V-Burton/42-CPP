@@ -7,7 +7,7 @@
 #include <list>
 #include <algorithm>
 
-#define INSERTION 2
+#define INSERTION 10
 
 class PmergeMe{
 	public:

@@ -32,18 +32,23 @@ void PmergeMe::insertionList() {
     std::list<int>::iterator it = _list.begin();
     ++it;
     while (it != _list.end()) {
-        std::list<int>::iterator current = it;
-        ++it;
-
-        while (current != _list.begin() && *current < *(--current)) {
-			std::list<int>::iterator next = current;
-			next++;
-            std::iter_swap(current, next);
+        std::list<int>::iterator current = it++;
+		std::list<int>::iterator prev = current;
+		prev--;
+        while (current != _list.begin() && *current < *prev) {
+            std::iter_swap(current, prev);
+			if (prev != _list.begin()){
+				current--;
+				prev--;
+			}
         }
     }
 }
 
 void	PmergeMe::mergeList(std::list<int>::iterator begin, std::list<int>::iterator middle, std::list<int>::iterator end){
+	if(begin == end)
+		return ;
+
 	std::list<int> listLeft;
 	std::list<int> listRight;
 	std::list<int>::iterator it;
@@ -57,28 +62,34 @@ void	PmergeMe::mergeList(std::list<int>::iterator begin, std::list<int>::iterato
 	std::list<int>::iterator iRight = listRight.begin();
 
 	for (it = begin; it != end; it++){
+		// std::cout << "it = " << *it << " iRight = " << *iRight << " iLeft = " << *iLeft ;
 		if (iRight == listRight.end()){
+			// std::cout << "----1" << std::endl;
 			*it = *iLeft;
 			iLeft++;
 		}
 		else if(iLeft == listLeft.end()){
 			*it = *iRight;
+			// std::cout << "----1" << std::endl;
 			iRight++;
 		}
 		else if (*iRight > *iLeft){
 			*it = *iLeft;
+			// std::cout << "----1" << std::endl;
 			iLeft++;
 		}
 		else{
 			*it = *iRight;
+			// std::cout << "----1" << std::endl;
 			iRight++;
 		}
+		// std::cout << *it << std::endl;
 	}
 }
 
 void	PmergeMe::sortList(std::list<int>::iterator	begin, std::list<int>::iterator	end){
 	std::list<int>::iterator	middle = _list.begin();
-	for (int i = (std::distance(begin, end) / 2) + 1; i > 0; i--)
+	for (int i = (std::distance(begin, end) / 2) + 1; i > 0; --i)
 		middle++;
 	if (std::distance(begin, end) > INSERTION){
 		sortList(begin, middle);
@@ -97,9 +108,9 @@ void	PmergeMe::displayList() const{
 }
 
 void	PmergeMe::insertionVector(int begin, int end){
-	for(int i = begin; i < end; i++)
-		std::cout << _vector[i] << " ";
-	std::cout << std::endl;
+	// for(int i = begin; i < end; i++)
+	// 	std::cout << _vector[i] << " ";
+	// std::cout << std::endl;
 	for (int i = begin + 1; i < end; i++){
 		int buffer = _vector[i];
 		int j = i;
@@ -109,40 +120,39 @@ void	PmergeMe::insertionVector(int begin, int end){
 		}
 		_vector[j] = buffer;
 	}
-	for(int i = begin; i < end; i++)
-		std::cout << _vector[i] << " ";
-	std::cout << std::endl;
+	// for(int i = begin; i < end; i++)
+	// 	std::cout << _vector[i] << " ";
+	// std::cout << std::endl;
 }
 
 void	PmergeMe::mergeVector(int begin, int middle, int end){
-	// std::cout << "begin = " << begin << " middle = " << middle << " end = " << end << std::endl;
 	int	iRight = 0, iLeft = 0, first = middle - begin, second = end - middle;
-	std::cout << "first = " << first << " second = " << second << std::endl;
+	// std::cout << "first = " << first << " second = " << second << std::endl;
 	std::vector<int> vectorLeft(_vector.begin() + begin, _vector.begin() + middle + 1);
 	std::vector<int> vectorRight(_vector.begin() + middle, _vector.begin() + end + 1);
 	for (int i = begin; i < end; i++){
-		std::cout << "i = " << i << " left[" << iLeft << "]= " << vectorLeft[iLeft] << " right[" << iRight << "] = " << vectorRight[iRight] << "";
+		// std::cout << "i = " << i << " left[" << iLeft << "]= " << vectorLeft[iLeft] << " right[" << iRight << "] = " << vectorRight[iRight] << "";
 		if (iRight == second){
-			std::cout << "----1" << std::endl;
+			// std::cout << "----1" << std::endl;
 			_vector[i] = vectorLeft[iLeft];
 			iLeft++;
 		}
 		else if(iLeft == first){
-			std::cout << "----2" << std::endl;
+			// std::cout << "----2" << std::endl;
 			_vector[i] = vectorRight[iRight];
 			iRight++;
 		}
 		else if (vectorRight[iRight] > vectorLeft[iLeft]){
-			std::cout << "----3" << std::endl;
+			// std::cout << "----3" << std::endl;
 			_vector[i] = vectorLeft[iLeft];
 			iLeft++;
 		}
 		else{
-			std::cout << "----4" << std::endl;
+			// std::cout << "----4" << std::endl;
 			_vector[i] = vectorRight[iRight];
 			iRight++;
 		}
-		std::cout << _vector[i] <<std::endl;
+		// std::cout << _vector[i] <<std::endl;
 	}
 }
 
