@@ -5,8 +5,10 @@ PmergeMe::PmergeMe(){}
 PmergeMe::PmergeMe(char **argv){
 	for (int i = 1; argv[i] != NULL; i++){
 		int	convert = atoi(argv[i]);
+		if (convert < 0)
+			throw std::runtime_error("Error");
 		_vector.push_back(convert);
-		_deque.push_back(convert);
+		_list.push_back(convert);
 	}
 }
 
@@ -16,119 +18,80 @@ PmergeMe::PmergeMe(const PmergeMe &rhs){
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &rhs){
 	this->_vector = rhs._vector;
-	this->_deque = rhs._deque;
+	this->_list = rhs._list;
 	return (*this);
 }
 
 PmergeMe::~PmergeMe(){}
 
-void	PmergeMe::insertionDeque(int begin, int end){
-	for (int i = 0; i < end - 1; i++){
-		int buffer = _deque[i + 1];
-		int j = i + 1;
-		while (j > begin && buffer < _deque[j - 1]){
-			_deque[j] = _deque[j - 1];
-			j--;
-		}
-		_deque[j] = buffer;
-	}
+std::list<int>	&PmergeMe::getList(){
+	return (_list);
 }
 
-void	PmergeMe::mergeDeque(int begin, int middle, int end){
-	int	iRight = 0, iLeft = 0, first = middle - begin + 1, second = end - middle;
-	std::deque<int> DequeLeft(_deque.begin() + begin, _deque.begin() + middle + 1 );
-	std::deque<int> DequeRight(_deque.begin() + middle + 1, _deque.begin() + end + 1);
-	for (int i = begin; i < end; i++){
-		if (iRight == second){
-			_deque[i] = DequeLeft[iLeft];
+void PmergeMe::insertionList() {
+    std::list<int>::iterator it = _list.begin();
+    ++it;
+    while (it != _list.end()) {
+        std::list<int>::iterator current = it;
+        ++it;
+
+        while (current != _list.begin() && *current < *(--current)) {
+            std::iter_swap(current, std::next(current));
+        }
+    }
+}
+
+void	PmergeMe::mergeList(std::list<int>::iterator begin, std::list<int>::iterator middle, std::list<int>::iterator end){
+	std::list<int> listLeft;
+	std::list<int> listRight;
+	std::list<int>::iterator it;
+	for (it = begin; it != middle; it++)
+		listLeft.push_back(*it);
+
+	for(it = middle; it != end; it++)
+		listRight.push_back(*it);
+	
+	std::list<int>::iterator iLeft = listLeft.begin();
+	std::list<int>::iterator iRight = listRight.begin();
+
+	for (it = begin; it != end; it++){
+		if (iRight == listRight.end()){
+			*it = *iLeft;
 			iLeft++;
 		}
-		else if(iLeft == first){
-			_deque[i] = DequeRight[iRight];
+		else if(iLeft == listLeft.end()){
+			*it = *iRight;
 			iRight++;
 		}
-		else if (DequeRight[iRight] > DequeLeft[iLeft]){
-			_deque[i] = DequeLeft[iLeft];
+		else if (*iRight > *iLeft){
+			*it = *iLeft;
 			iLeft++;
 		}
 		else{
-			_deque[i] = DequeRight[iRight];
+			*it = *iRight;
 			iRight++;
 		}
 	}
 }
 
-void	PmergeMe::sortDeque(int begin, int end){
-	int	middle = (begin + end) / 2;
-	if (end - begin > INSERTION){
-		sortDeque(begin, middle + 1);
-		sortDeque(middle + 1, end);
-		mergeDeque(begin, middle, end);
+void	PmergeMe::sortList(std::list<int>::iterator	begin, std::list<int>::iterator	end){
+	std::list<int>::iterator	middle = _list.begin();
+	std::advance(middle, std::distance(begin, end) / 2);
+	if (std::distance(begin, end) > INSERTION){
+		sortList(begin, middle);
+		sortList(middle, end);
+		mergeList(begin, middle, end);
 	}
 	else
-		insertionDeque(begin, end);
+		insertionList();
 }
 
-void	PmergeMe::displayDeque() const{
+void	PmergeMe::displayList() const{
 	std::cout << "After:	";
-	for(__SIZE_TYPE__ i = 0; i < _deque.size(); i++)
-		std::cout << _deque[i] << " ";
+	for(std::list<int>::const_iterator it = _list.begin(); it != _list.end(); it++)
+		std::cout << *it << " ";
 	std::cout << std::endl;
 }
-
-// void	PmergeMe::insertionList(std::list<int>::iterator begin, std::list<int>::iterator end){
-// 	for (int i = 0; i < end - 1; i++){
-// 		int buffer = _list[i + 1];
-// 		int j = i + 1;
-// 		while (j > begin && buffer < _list[j - 1]){
-// 			_list[j] = _list[j - 1];
-// 			j--;
-// 		}
-// 		_list[j] = buffer;
-// 	}
-// }
-
-// void	PmergeMe::mergeList(std::list<int>::iterator begin, std::list<int>::iterator middle, std::list<int>::iterator end{
-// 	int	iRight = 0, iLeft = 0, first = middle - begin + 1, second = end - middle;
-// 	std::list<int> listLeft(_list.begin() + begin, _list.begin() + middle + 1 );
-// 	std::list<int> listRight(_list.begin() + middle + 1, _list.begin() + end + 1);
-// 	for (int i = begin; i < end; i++){
-// 		if (iRight == second){
-// 			_list[i] = listLeft[iLeft];
-// 			iLeft++;
-// 		}
-// 		else if(iLeft == first){
-// 			_list[i] = listRight[iRight];
-// 			iRight++;
-// 		}
-// 		else if (listRight[iRight] > listLeft[iLeft]){
-// 			_list[i] = listLeft[iLeft];
-// 			iLeft++;
-// 		}
-// 		else{
-// 			_list[i] = listRight[iRight];
-// 			iRight++;
-// 		}
-// 	}
-// }
-
-// void	PmergeMe::sortList(std::list<int>::iterator begin, std::list<int>::iterator end){
-// 	std::list<int>::iterator	middle = _list.begin() + _list.size() / 2 + 1;
-// 	if (end - begin > INSERTION){
-// 		sortList(begin, middle + 1);
-// 		sortList(middle + 1, end);
-// 		mergeList(begin, middle, end);
-// 	}
-// 	else
-// 		insertionList(begin, end);
-// }
-
-// void	PmergeMe::displayList() const{
-// 	std::cout << "After:	";
-// 	for(__SIZE_TYPE__ i = 0; i < _list.size(); i++)
-// 		std::cout << _list[i] << " ";
-// 	std::cout << std::endl;
-// }
 
 void	PmergeMe::insertionVector(int begin, int end){
 	for (int i = 0; i < end - 1; i++){
