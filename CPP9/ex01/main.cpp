@@ -15,20 +15,19 @@ int main(int argc, char **argv){
         }
         if (argv[1][i] == '+' || argv[1][i] == '-' || argv[1][i] == '*' || argv[1][i] == '/')
             sign++;
-        if (argv[1][i] < '9' && argv[1][i] > '0')
+        if (argv[1][i] <= '9' && argv[1][i] >= '0')
             operand++;
     }
     if ((operand - sign) != 1){
+		std::cout << "operqnd = " << operand << " sign = " << sign << std::endl;
        std::cerr << "Error2" << std::endl;
         return (1);
     }
 
     try{
-        // std::cout << "je passe ici" <<std::endl;
         RPN test = RPN(argv[1]);
-        test.calculate();
     }
-    catch(std::exception &e){
+    catch(std::runtime_error &e){
         std::cerr << e.what() << std::endl;
     }
     return (0);

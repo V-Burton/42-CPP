@@ -6,50 +6,30 @@ RPN::RPN(std::string input){
 
 	std::istringstream iss(input);
 	std::string value;
+	int operand1;
+	int	operand2;
 
 	while (std::getline(iss, value, ' ')){
-		if ()
+		if (value == "+" || value == "-" || value == "*" || value == "/"){
+			operand2 = _value.top();
+			_value.pop();
+			operand1 = _value.top();
+			_value.pop();
+			if(value == "+")
+				_value.push(operand1 + operand2);
+			else if(value == "-")
+				_value.push(operand1 - operand2);
+			else if(value == "*")
+				_value.push(operand1 * operand2);
+			else if (value == "/" && operand2 != 0)
+				_value.push(operand1 / operand2);
+			else
+				throw std::runtime_error("Division by zero impossible.");
+		}
+		else
+			_value.push(static_cast<int>(atoi(value.c_str())));
 	}
-
-	
-	// int	i = 0;
-	// int	checkOperator = 0;
-	// int	checkValue = 0;
-	// std::stack<int> _bufferValue;
-	// std::stack<std::string> _bufferOperator;
-	// std::istringstream iss(input);
-	// std::string value;
-
-	// while (std::getline(iss, value, ' ')){
-	// 	if (std::isdigit(value[0])){
-	// 		// if (checkValue != 0 && i > 1)
-	// 		// 	throw std::runtime_error("Error: not a good format1 : '" + input + "'");
-	// 		_bufferValue.push(static_cast<int>(atoi(value.c_str())));
-	// 		checkOperator = 0;
-	// 		checkValue++;
-	// 	}
-	// 	else{
-	// 		// if (checkOperator != 0 || value.size() > 1)
-	// 		// 	throw std::runtime_error("Error: not a good format2 : '" + input + "'");
-	// 		_bufferOperator.push(value);
-	// 		checkOperator++;
-	// 		checkValue = 0;
-	// 	}
-	// 	if (_bufferValue.size() == 1 && _bufferOperator.size() == 1)
-	// 			throw std::runtime_error("Error: not a good format3 : '" + input + "'");
-	// 	i++;
-	// }
-	
-	// while (!_bufferValue.empty()){
-	// 	int	buffer = _bufferValue.top();
-	// 	_bufferValue.pop();
-	// 	_value.push(buffer);
-	// }
-	// while (!_bufferOperator.empty()){
-	// 	std::string	buffer = _bufferOperator.top();
-	// 	_bufferOperator.pop();
-	// 	_operator.push(buffer);
-	// }
+	std::cout << _value.top() << std::endl;
 }
 
 RPN::RPN(const RPN &rhs){
@@ -57,33 +37,9 @@ RPN::RPN(const RPN &rhs){
 }
 
 RPN &RPN::operator=(const RPN &rhs){
-	if (this != &rhs){
-		this->_operator = rhs._operator;
+	if (this != &rhs)
 		this->_value = rhs._value;
-	}
 	return (*this);
 }
 
 RPN::~RPN(){}
-
-void	RPN::calculate(){
-	int		result = _value.top(); 
-	int		buffer = _value.top();
-	std::string	operand;
-	
-	_value.pop();
-	while (!_value.empty()){
-		operand = _operator.top();
-		if (operand == "+")
-			result += _value.top();
-		else if (operand == "-")
-			result -= _value.top();
-		else if (operand == "*")
-			result *= _value.top();
-		else if (operand == "/")
-			result /= _value.top();
-		_value.pop();
-		_operator.pop();
-	}
-	std::cout << result << std::endl;
-}

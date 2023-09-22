@@ -13,10 +13,7 @@ class RPN{
         RPN &operator=(const RPN &rhs);
         ~RPN();
 
-        void    calculate();
-
     private:
         RPN();
-        std::stack<double>     _value;
-        // std::stack<std::string>    _operator; 
+        std::stack<int>     _value;
 };
