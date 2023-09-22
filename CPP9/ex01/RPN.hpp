@@ -17,6 +17,6 @@ class RPN{
 
     private:
         RPN();
-        std::stack<int>     _value;
-        std::stack<std::string>    _operator; 
+        std::stack<double>     _value;
+        // std::stack<std::string>    _operator; 
 };

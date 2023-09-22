@@ -52,7 +52,7 @@ void    BitcoinExchange::displayValue(std::string inputFile) const{
             continue;
         }
         std::map<std::string, float>::const_iterator it = this->_priceHistory.lower_bound(key);
-        if (it->first != key)
+        if (it->first != key && key != "2009-01-01")
             it--;
         std::cout <<  key << " => " << fValue << " = "<< it->second * fValue << std::endl;
     }
@@ -83,13 +83,13 @@ int checkDate(std::string date){
     int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     if (year % 4 == 0)
         days[1] = 29;
-    if (mounth < 1 || mounth > 12){
+    if (mounth < 1 || mounth > 12 || day < 1 || day > days[mounth] || year < 2009){
         std::cerr << RED << "Error: bad input => " << date << END << std::endl;
         return (1);
     }
-    if (day < 1 || day > days[mounth]){
-        std::cerr << RED << "Error: bad input => " << date << END << std::endl;
-        return (1);
-    }
+    // if (day < 1 || day > days[mounth]){
+    //     std::cerr << RED << "Error: bad input => " << date << END << std::endl;
+    //     return (1);
+    // }
     return (0);
 }

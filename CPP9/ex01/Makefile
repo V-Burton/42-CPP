@@ -14,7 +14,7 @@ SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.cpp=$(BUILD_DIR)/%.o)
 
-CC				:=	c++
+CC				:=	g++
 CC_FLAGS		:=	-Wextra -Werror -Wall -std=c++98 -g3
 
 all: $(NAME)
