@@ -21,15 +21,20 @@ std::map<std::string, float> buildData(std::string inputData){
 }
 
 int main(int argc, char **argv){
-    
+
     std::map<std::string, float> priceHistoryBtc;
     if (argc != 2){
         std::cerr << RED << "Error: could not open file." << END << std::endl;
         return (1);
     }
     (void)argv;
-    BitcoinExchange account;
-    account.setData(buildData("data.csv"));
-    account.displayValue(argv[1]);
+	try {
+   		BitcoinExchange account;
+		account.setData(buildData("data.csv"));
+		account.displayValue(argv[1]);
+	}
+	catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
+	}
     return (0);
 }

@@ -25,7 +25,7 @@ void    BitcoinExchange::displayValue(std::string inputFile) const{
         if (buffer == "date | value" || buffer.length() == 0)
             continue;
         std::istringstream iss(buffer);
-        std::getline(iss, key, ' '); 
+        std::getline(iss, key, ' ');
         if (checkDate(key) == 1)
             continue;
         std::getline(iss, value, ' ');
@@ -38,10 +38,11 @@ void    BitcoinExchange::displayValue(std::string inputFile) const{
             continue;
         }
         std::getline(iss, value, ' ');
-        double fValue =  checkValue(value);
+		char* end;
+    	double fValue = strtod(value.c_str(), &end);
         try {
-            if (fValue == -1)
-                 throw std::runtime_error("Error: bad input.");
+            if (*end != '\0')
+                 throw std::runtime_error("Error: bad input : Unexpected char");
             else if (fValue < 0)
                 throw std::runtime_error("Error: not a positive number.");
             else if (fValue > 1000)
@@ -58,15 +59,6 @@ void    BitcoinExchange::displayValue(std::string inputFile) const{
     }
 }
 
-double checkValue(const std::string& str) {
-    char* end;
-    double value;
-    value = strtod(str.c_str(), &end);
-    if (*end == '\0')
-        return (value);
-    return (-1);
-}
-
 int checkDate(std::string date){
     if (date.size() != 10){
         std::cerr << RED << "Error: date format" << END << std::endl;
@@ -76,20 +68,16 @@ int checkDate(std::string date){
         std::cerr << RED << "Error: date format" << END << std::endl;
         return (1);
     }
-    int day, mounth, year;
+    int day, month, year;
     year = atoi(date.c_str());
-    mounth = atoi(date.c_str() + 5);
+    month = atoi(date.c_str() + 5);
     day = atoi(date.c_str() + 8);
     int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     if (year % 4 == 0)
         days[1] = 29;
-    if (mounth < 1 || mounth > 12 || day < 1 || day > days[mounth] || year < 2009){
+    if (month < 1 || month > 12 || day < 1 || day > days[month - 1] || year < 2009){
         std::cerr << RED << "Error: bad input => " << date << END << std::endl;
         return (1);
     }
-    // if (day < 1 || day > days[mounth]){
-    //     std::cerr << RED << "Error: bad input => " << date << END << std::endl;
-    //     return (1);
-    // }
     return (0);
 }
