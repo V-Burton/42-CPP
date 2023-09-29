@@ -9,6 +9,10 @@ int main(int argc, char **argv){
     int sign = 0;
     int operand = 0;
     for (int i = 0; argv[1][i] ; i++){
+		if(i % 2 == ' '){
+			std::cerr << "Error: Wrong format." << std::endl;
+			return (1);
+		}
         if ((argv[1][i] > '9' || argv[1][i] < '0') && argv[1][i] != ' ' && argv[1][i] != '+' && argv[1][i] != '-' && argv[1][i] != '*' && argv[1][i] != '/'){
             std::cerr << "Error" << std::endl;
             return (1);
@@ -19,11 +23,9 @@ int main(int argc, char **argv){
             operand++;
     }
     if ((operand - sign) != 1){
-		std::cout << "operqnd = " << operand << " sign = " << sign << std::endl;
-       std::cerr << "Error2" << std::endl;
+       std::cerr << "Error: operand = " << operand << " and sign = " << sign << "." << std::endl;
         return (1);
     }
-
     try{
         RPN test = RPN(argv[1]);
     }

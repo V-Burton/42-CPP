@@ -5,6 +5,8 @@
 #include <sstream>
 #include <stack>
 #include <cstdlib>
+#include <iomanip>
+#include <limits>
 
 class RPN{
     public:
@@ -15,5 +17,5 @@ class RPN{
 
     private:
         RPN();
-        std::stack<int>     _value;
+        std::stack<long>     _value;
 };
