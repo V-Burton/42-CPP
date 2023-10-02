@@ -7,10 +7,6 @@ BitcoinExchange::BitcoinExchange(){}
 
 BitcoinExchange::~BitcoinExchange(){}
 
-void    BitcoinExchange::setAccount(std::multimap<std::string, float> account){
-    this->_account = account;
-}
-
 void    BitcoinExchange::setData(std::map<std::string, float> dataFile){
     this->_priceHistory = dataFile;
 }
@@ -18,7 +14,7 @@ void    BitcoinExchange::setData(std::map<std::string, float> dataFile){
 void    BitcoinExchange::displayValue(std::string inputFile) const{
     std::ifstream input(inputFile.c_str());
     if (!input.is_open()){
-		throw std::ios_base::failure(std::string("BitcoinExchange: ") + inputFile);
+		throw std::ios_base::failure(std::string("BitcoinExchange: ") + inputFile + ": couldn't open file");
     }
     std::string buffer, key, value;
     while(std::getline(input, buffer)){

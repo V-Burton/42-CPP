@@ -22,7 +22,6 @@ class BitcoinExchange{
         BitcoinExchange();
         ~BitcoinExchange();
 
-        void    setAccount(std::multimap<std::string, float> account);
         void    setData(std::map<std::string, float> dataFile);
         void    displayValue(std::string inputFile) const;
 
@@ -30,6 +29,5 @@ class BitcoinExchange{
         BitcoinExchange(const BitcoinExchange &rhs);
         BitcoinExchange &operator=(const BitcoinExchange &rhs);
         
-        std::multimap<std::string, float>    _account;
         std::map<std::string, float>    _priceHistory;
 };
