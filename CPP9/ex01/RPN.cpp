@@ -6,40 +6,41 @@ RPN::RPN(std::string input){
 
 	std::istringstream iss(input);
 	std::string value;
-	int i = 0;
-	int operand1;
-	int	operand2;
+	float 	operand1;
+	float	operand2;
+	float	checkerValue;
+	int		i = 0;
 
-	while (std::getline(iss, value, ' ')){
-		if (value == "+" || value == "-" || value == "*" || value == "/"){
+	while (input[i]){
+		if (input[i] == '+' || input[i] == '-' || input[i] == '*' || input[i] == '/'){
 			if (_value.size() < 2)
-				throw std::runtime_error("Wrong Format.");
+				throw std::runtime_error("Problem format: wrong order in operand and operator");
 			operand2 = _value.top();
 			_value.pop();
 			operand1 = _value.top();
 			_value.pop();
-			if (operand1 > std::numeric_limits<int>::max() || operand1 < std::numeric_limits<int>::min() || \
-				 operand2 > std::numeric_limits<int>::max() || operand2 < std::numeric_limits<int>::min())
-				throw std::runtime_error("result is bigger than an 'int'.");
-			if(value == "+")
-				_value.push(operand1 + operand2);
-			else if(value == "-")
-				_value.push(operand1 - operand2);
-			else if(value == "*")
-				_value.push(operand1 * operand2);
-			else if (value == "/" && operand2 != 0)
-				_value.push(operand1 / operand2);
+			if(input[i] == '+')
+				checkerValue = operand1 + operand2;
+			else if(input[i] == '-')
+				checkerValue = operand1 - operand2;
+			else if(input[i] == '*')
+				checkerValue = operand1 * operand2;
+			else if (input[i] == '/' && operand2 != 0)
+				checkerValue = operand1 / operand2;
 			else
 				throw std::runtime_error("Division by zero impossible.");
+			if (checkerValue <= 2147483647 && checkerValue >= -2147483648)
+				_value.push(checkerValue);
+			else
+				throw std::runtime_error("Error: overflow: result bigger than an int.");
 		}
-		else{
-			long result = static_cast<long>(atof(value.c_str()));
-			if (result)
-				_value.push(result);
-		}
+		else if (!std::isspace(static_cast<unsigned char>(input[i])))
+			_value.push(static_cast<float>(input[i]) - 48);
 		i++;
 	}
-	std::cout << std::setprecision(7) << _value.top() << std::endl;
+	if (_value.size() > 1)
+		throw std::runtime_error("Problem format");
+	std::cout << std::setprecision(10) << _value.top() << std::endl;
 }
 
 RPN::RPN(const RPN &rhs){

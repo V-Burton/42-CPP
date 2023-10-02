@@ -13,17 +13,17 @@ int main(int argc, char **argv){
 			std::cerr << "Error: Wrong format." << std::endl;
 			return (1);
 		}
-        if ((argv[1][i] > '9' || argv[1][i] < '0') && argv[1][i] != ' ' && argv[1][i] != '+' && argv[1][i] != '-' && argv[1][i] != '*' && argv[1][i] != '/'){
-            std::cerr << "Error" << std::endl;
+        if ((argv[1][i] > '9' || argv[1][i] < '0') && !std::isspace(static_cast<unsigned char>(argv[1][i])) && argv[1][i] != '+' && argv[1][i] != '-' && argv[1][i] != '*' && argv[1][i] != '/'){
+            std::cerr << "Error: wrong characteres in input" << std::endl;
             return (1);
         }
-        if (argv[1][i] == '+' || argv[1][i] == '-' || argv[1][i] == '*' || argv[1][i] == '/')
+        if ((argv[1][i] == '+' || argv[1][i] == '-' || argv[1][i] == '*' || argv[1][i] == '/') && (std::isspace(static_cast<unsigned char>(argv[1][i + 1])) || argv[1][i + 1] == '\0' || argv[1][i] == '+' || argv[1][i] == '-' || argv[1][i] == '*' || argv[1][i] == '/' ))
             sign++;
         if (argv[1][i] <= '9' && argv[1][i] >= '0')
             operand++;
     }
     if ((operand - sign) != 1){
-       std::cerr << "Error: operand = " << operand << " and sign = " << sign << "." << std::endl;
+       std::cerr << "Error: Problem format: operand = " << operand << " and operator = " << sign << "." << std::endl;
         return (1);
     }
     try{

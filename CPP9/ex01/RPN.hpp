@@ -17,5 +17,5 @@ class RPN{
 
     private:
         RPN();
-        std::stack<long>     _value;
+        std::stack<float>     _value;
 };
