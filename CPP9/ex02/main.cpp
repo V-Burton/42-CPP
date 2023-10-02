@@ -22,8 +22,8 @@ int	main(int argc, char **argv){
 		timeEnd = clock();
 		test.displayList("After:	");
 		timeD = static_cast<double>(timeEnd - timeStart) / CLOCKS_PER_SEC * 1000000;
-		std::cout << "Time to precess a range of " << argc - 1 << " elements with std::vector<int> : " << timeV << " us" << std::endl;
-		std::cout << "Time to precess a range of " << argc - 1 << " elements with std::list<int> : " << timeD << " us" << std::endl;
+		std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector<int> : " << timeV << " us" << std::endl;
+		std::cout << "Time to process a range of " << argc - 1 << " elements with std::list<int> : " << timeD << " us" << std::endl;
 	}
 	catch(std::exception &e){
 		std::cerr << "Error: " << e.what() << std::endl;
